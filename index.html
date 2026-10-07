@@ -1,0 +1,294 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Shawn Rodrigues · Ingeniería Civil Electrónica</title>
+<meta name="description" content="Estudiante de Ingeniería Civil Electrónica en la UTFSM, con especialización en Control Automático. Guarda mi contacto o escríbeme por WhatsApp.">
+<meta property="og:title" content="Shawn Rodrigues · Ingeniería Civil Electrónica">
+<meta property="og:description" content="Control automático, automatización industrial, instrumentación y energías renovables. Valparaíso, Chile.">
+<meta property="og:type" content="profile">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230f2838'/%3E%3Ccircle cx='16' cy='16' r='7' fill='none' stroke='%23d9ae45' stroke-width='4'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Martian+Mono:wght@400;500&family=Red+Hat+Display:wght@700;800&family=Red+Hat+Text:wght@400;500&display=swap">
+<style>
+  /* Una placa de circuito del ancho de un teléfono: arriba la tarjeta con el contacto,
+     debajo el perfil completo en una sola columna. */
+  :root {
+    --mask: #eef1ee;      /* fondo de la página */
+    --board: #fbfcfb;     /* la tarjeta */
+    --silk: #15211d;      /* texto principal */
+    --muted: #5d6c66;
+    --trace: #d3dbd6;     /* líneas finas */
+    --gold: #8a650c;      /* acento en texto y botones */
+    --pad: #c8a03a;       /* pads dorados */
+    --on-gold: #ffffff;
+    --focus: #1f6f8b;
+    --font-display: "Red Hat Display", "Segoe UI", system-ui, sans-serif;
+    --font-body: "Red Hat Text", "Segoe UI", system-ui, sans-serif;
+    --font-mono: "Martian Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --mask: #081823; --board: #0f2838; --silk: #eef3f1; --muted: #93a8b3;
+      --trace: #234459; --gold: #e3bd55; --pad: #d9ae45; --on-gold: #081823;
+      --focus: #7cc4dd;
+      color-scheme: dark;
+    }
+  }
+
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--mask);
+    color: var(--silk);
+    font-family: var(--font-body);
+    font-size: 1rem;
+    line-height: 1.5;
+    padding-block: calc(1.25rem + env(safe-area-inset-top, 0px)) calc(3rem + env(safe-area-inset-bottom, 0px));
+    padding-inline: 16px;
+  }
+  .wrap { max-width: 38rem; margin-inline: auto; display: flex; flex-direction: column; gap: 2.25rem; }
+  a { color: inherit; }
+  :focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+
+  /* ---------- tarjeta ---------- */
+  .board {
+    background-color: var(--board);
+    background-image:
+      radial-gradient(circle at 20px 20px, var(--mask) 0 3.5px, var(--pad) 4px 7.5px, transparent 8px),
+      radial-gradient(circle at calc(100% - 20px) 20px, var(--mask) 0 3.5px, var(--pad) 4px 7.5px, transparent 8px),
+      radial-gradient(circle at 20px calc(100% - 20px), var(--mask) 0 3.5px, var(--pad) 4px 7.5px, transparent 8px),
+      radial-gradient(circle at calc(100% - 20px) calc(100% - 20px), var(--mask) 0 3.5px, var(--pad) 4px 7.5px, transparent 8px);
+    background-repeat: no-repeat;
+    border: 1px solid var(--trace);
+    border-radius: 12px;
+    padding: 2.75rem 1.25rem 2.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.4rem;
+  }
+  .who { display: flex; flex-direction: column; gap: 0.35rem; }
+  h1 {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: clamp(2rem, 9.5vw, 2.9rem);
+    line-height: 1.03;
+    letter-spacing: -0.015em;
+    margin: 0;
+    text-wrap: balance;
+  }
+  .role { margin: 0.25rem 0 0; font-weight: 500; font-size: 1.08rem; }
+  .where { margin: 0; color: var(--muted); }
+
+  .btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    text-decoration: none;
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    border-radius: 8px;
+    padding: 1rem 1.1rem;
+    background: var(--gold);
+    color: var(--on-gold);
+    border: 1px solid var(--gold);
+    text-align: center;
+  }
+  .btn svg { flex: none; }
+  .btn:hover { filter: brightness(1.08); }
+  .save-note { margin: -0.8rem 0 0; color: var(--muted); font-size: 0.88rem; text-align: center; }
+
+  .pins { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--trace); }
+  .pin {
+    display: grid;
+    grid-template-columns: 10px 2.6rem minmax(0, 1fr);
+    align-items: center;
+    column-gap: 0.65rem;
+    padding-block: 0.8rem;
+    border-bottom: 1px solid var(--trace);
+    text-decoration: none;
+  }
+  .pin::before { content: ""; width: 10px; height: 10px; border-radius: 2px; background: var(--pad); }
+  .label {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .pin-value {
+    min-width: 0;
+    overflow-wrap: anywhere;
+    font-variant-numeric: tabular-nums;
+    text-decoration: underline;
+    text-decoration-color: var(--pad);
+    text-underline-offset: 3px;
+  }
+
+  /* ---------- perfil ---------- */
+  section { display: flex; flex-direction: column; gap: 0.85rem; padding-inline: 0.25rem; }
+  h2 {
+    margin: 0;
+    font-family: var(--font-mono);
+    font-weight: 500;
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gold);
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+  h2::after { content: ""; flex: 1; height: 1px; background: var(--trace); }
+  p { margin: 0; max-width: 65ch; }
+  h3 {
+    margin: 0;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1.15rem;
+    line-height: 1.25;
+    text-wrap: balance;
+  }
+  .meta {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.04em;
+    color: var(--muted);
+    font-variant-numeric: tabular-nums;
+  }
+  ul.points { margin: 0; padding-left: 1.1rem; display: flex; flex-direction: column; gap: 0.45rem; }
+  ul.points li::marker { color: var(--pad); }
+
+  .entries { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 1.35rem; }
+  .entry { display: flex; flex-direction: column; gap: 0.3rem; }
+  .entry .place { color: var(--muted); }
+
+  dl.skills { margin: 0; display: grid; grid-template-columns: minmax(0, 1fr); gap: 0.9rem; }
+  dl.skills div { display: flex; flex-direction: column; gap: 0.15rem; }
+  dl.skills dt { font-weight: 500; }
+  dl.skills dd { margin: 0; color: var(--muted); }
+  @media (min-width: 34rem) {
+    dl.skills div { display: grid; grid-template-columns: 11rem minmax(0, 1fr); gap: 1rem; }
+  }
+
+  footer { display: flex; flex-direction: column; gap: 0.9rem; }
+  footer p { color: var(--muted); font-size: 0.88rem; text-align: center; max-width: none; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="board">
+    <div class="who">
+      <h1>Shawn Rodrigues</h1>
+      <p class="role">Ingeniería Civil Electrónica</p>
+      <p class="where">Estudiante en etapa final · UTFSM · Valparaíso, Chile</p>
+    </div>
+
+    <a class="btn" href="shawn-rodrigues.vcf">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M19 8v6M16 11h6"/></svg>
+      Guardar contacto
+    </a>
+    <p class="save-note">Abre mi ficha para agregarla a tus contactos.</p>
+
+    <ul class="pins">
+      <li><a class="pin" href="https://wa.me/56920998049" target="_blank" rel="noopener" aria-label="WhatsApp: +56 9 2099 8049"><span class="label">WA</span><span class="pin-value">+56 9 2099 8049</span></a></li>
+      <li><a class="pin" href="tel:+56930515389"><span class="label">Cel</span><span class="pin-value">+56 9 3051 5389</span></a></li>
+      <li><a class="pin" href="mailto:shawn@live.cl"><span class="label">Mail</span><span class="pin-value">shawn@live.cl</span></a></li>
+      <li><a class="pin" href="https://www.linkedin.com/in/shawn-rodrigues" target="_blank" rel="noopener" aria-label="LinkedIn: shawn-rodrigues"><span class="label">In</span><span class="pin-value">linkedin.com/in/shawn-rodrigues</span></a></li>
+    </ul>
+  </header>
+
+  <section>
+    <h2>Perfil</h2>
+    <p>Estudiante de Ingeniería Civil Electrónica de la Universidad Técnica Federico Santa María, con especialización en Control Automático e interés en automatización industrial, sistemas de control, instrumentación y energías renovables.</p>
+    <p>Experiencia académica en modelado y simulación de sistemas dinámicos, control automático, programación de PLC y desarrollo de proyectos de ingeniería con MATLAB/Simulink.</p>
+  </section>
+
+  <section>
+    <h2>Memoria de título</h2>
+    <h3>Diseño y simulación de un sistema inteligente de seguimiento solar de dos ejes</h3>
+    <span class="meta">2026 · UTFSM</span>
+    <ul class="points">
+      <li>Sistema de orientación para paneles fotovoltaicos, diseñado y simulado en MATLAB/Simulink.</li>
+      <li>Modelado dinámico de los ejes de azimut y elevación, con estrategias de control para el posicionamiento del panel.</li>
+      <li>Arquitectura de supervisión que selecciona el modo de operación según la energía estimada, las condiciones ambientales y el consumo de los actuadores.</li>
+      <li>Comparación del desempeño energético frente a un panel fijo y a estrategias de seguimiento convencional.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Experiencia</h2>
+    <ol class="entries">
+      <li class="entry">
+        <span class="meta">08/2025 – 12/2025</span>
+        <h3>Ayudante de Laboratorio de Automatización Industrial</h3>
+        <span class="place">Universidad Técnica Federico Santa María</span>
+        <p>Apoyo en sesiones prácticas con PLC, sensores, actuadores y sistemas automatizados, y asistencia a estudiantes en la implementación, análisis y diagnóstico de sistemas de control industrial.</p>
+      </li>
+      <li class="entry">
+        <span class="meta">01/2025 – 02/2025</span>
+        <h3>Practicante</h3>
+        <span class="place">Hidráulica y Sellos Ltda.</span>
+        <p>Apoyo en actividades técnicas relacionadas con sistemas hidráulicos, componentes industriales y documentación técnica.</p>
+      </li>
+      <li class="entry">
+        <span class="meta">08/2024 – 12/2024</span>
+        <h3>Ayudante de Control Automático</h3>
+        <span class="place">Universidad Técnica Federico Santa María</span>
+        <p>Apoyo académico en modelado matemático, análisis de sistemas dinámicos y fundamentos de control clásico.</p>
+      </li>
+      <li class="entry">
+        <span class="meta">03/2024 – 07/2024</span>
+        <h3>Ayudante de Laboratorio de Sistemas Digitales</h3>
+        <span class="place">Universidad Técnica Federico Santa María</span>
+        <p>Apoyo en actividades prácticas de lógica digital, diseño de circuitos y verificación de sistemas digitales.</p>
+      </li>
+    </ol>
+  </section>
+
+  <section>
+    <h2>Habilidades</h2>
+    <dl class="skills">
+      <div><dt>Control y automatización</dt><dd>Control PID, modelado de sistemas dinámicos, PLC, automatización industrial, sensores, actuadores y diagramas P&amp;ID.</dd></div>
+      <div><dt>Software</dt><dd>MATLAB, Simulink, PLECS, STM32CubeIDE, CoDeSys y LaTeX.</dd></div>
+      <div><dt>Programación</dt><dd>C, MATLAB, fundamentos de HDL y scripting.</dd></div>
+      <div><dt>Electrónica</dt><dd>Instrumentación, electrónica digital, sistemas embebidos y electrónica de potencia.</dd></div>
+      <div><dt>Idiomas</dt><dd>Español nativo e inglés B2 (Cambridge English Qualification, 2018).</dd></div>
+    </dl>
+  </section>
+
+  <section>
+    <h2>Otros proyectos</h2>
+    <ol class="entries">
+      <li class="entry">
+        <span class="meta">2023</span>
+        <h3>ChipUSM: cifrado AES-128 en Tiny Tapeout</h3>
+        <p>Desarrollo colaborativo de un circuito de cifrado AES-128 en modo ECB para la cuarta iteración de Tiny Tapeout, con diseño, simulación y verificación en el flujo OpenLane, implementado en dos tiles de 160 × 100 µm.</p>
+      </li>
+      <li class="entry">
+        <span class="meta">2026 – presente</span>
+        <h3>Servidor doméstico autónomo (homelab off-grid)</h3>
+        <p>Sistema personal que centraliza streaming multimedia, nube privada con respaldo de fotos y gestión de contraseñas, modelos de lenguaje autoalojados, y herramientas de red y domótica con acceso remoto seguro.</p>
+      </li>
+    </ol>
+  </section>
+
+  <footer>
+    <a class="btn" href="shawn-rodrigues.vcf">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M19 8v6M16 11h6"/></svg>
+      Guardar contacto
+    </a>
+    <p>Shawn Rodrigues · Valparaíso, Chile</p>
+  </footer>
+
+</div>
+</body>
+</html>

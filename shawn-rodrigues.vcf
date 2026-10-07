@@ -1,0 +1,13 @@
+BEGIN:VCARD
+VERSION:3.0
+N:Rodrigues;Shawn;;;
+FN:Shawn Rodrigues
+TITLE:Estudiante de Ingeniería Civil Electrónica
+ORG:Universidad Técnica Federico Santa María
+TEL;TYPE=CELL:+56930515389
+item1.TEL:+56920998049
+item1.X-ABLabel:WhatsApp
+EMAIL;TYPE=INTERNET:shawn@live.cl
+URL:https://www.linkedin.com/in/shawn-rodrigues
+ADR;TYPE=WORK:;;;Valparaíso;;;Chile
+END:VCARD
